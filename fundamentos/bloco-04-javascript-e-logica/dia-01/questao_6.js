@@ -1,16 +1,4 @@
-const chessPiece = require("readLine");
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-rl.question("What is the chess piece?", function (chessPiece) { 
-  console.log(`${answer}`);
-  rl.close();
-});
-
-chessPiece = chessPiece.toLowerCase();
+const chessPiece = prompt("What is the chess piece?").toLowerCase();
 
 switch (chessPiece) {
   case "king":
