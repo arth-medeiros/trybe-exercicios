@@ -126,3 +126,37 @@
 //
 // console.log(returnMostRepeated(nums));
 
+// Input an integer and return the sum of all integers from 1 to input
+//
+// let n = 5;
+//
+// function totalSum(input) {
+//   let sum = 0;
+//   for (let i = 1; i <= input; i += 1) {
+//     sum += i;
+//   }
+//   return sum;
+// }
+//
+// console.log(totalSum(n));
+
+// Receive two strings and check if th second string is the ending of the first string.
+//
+// let word = "trybe";
+// let ending = "be";
+//
+// function checkIfEnding(str1, str2) {
+//   let arrayWord = str1.split("");
+//   let arrayEnding = str2.split("");
+//   let counter = 0;
+//
+//   for (let i = arrayWord.length - arrayEnding.length; i < arrayWord.length; i += 1) { 
+//     if (arrayEnding[counter] != arrayWord[i]) {
+//       return false;
+//     }
+//     counter += 1;
+//   }
+//   return true;
+// }
+//
+// console.log(checkIfEnding(word, ending));
