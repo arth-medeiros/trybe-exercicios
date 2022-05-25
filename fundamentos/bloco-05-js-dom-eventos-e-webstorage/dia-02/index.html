@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício 5.2</title>
+    <style>
+      section {
+        border-color: black;
+        border-style: solid;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Create h1 tag
+      let newH1 = document.createElement('h1');
+      newH1.innerText = 'Exercício 5.2 - JavaScript DOM';
+      newH1.classList.add('title');
+      document.querySelector('body').appendChild(newH1);
+      // Create main tag with class
+      let newMain = document.createElement('main');
+      newMain.classList.add('main-content');
+      document.querySelector('body').appendChild(newMain);
+      // Create section with class
+      let sectionCenter = document.createElement('section');
+      let sectionLeft = document.createElement('section');
+      let sectionRight = document.createElement('section');
+      sectionCenter.classList.add('center-content');
+      sectionLeft.classList.add('left-content');
+      sectionRight.classList.add('right-content');
+      document.querySelector('.main-content').appendChild(sectionCenter);
+      document.querySelector('.main-content').appendChild(sectionLeft);
+      document.querySelector('.main-content').appendChild(sectionRight);
+      //Create p in section center
+      let centerP = document.createElement('p');
+      centerP.innerText = 'Lorem Ipsum, Lorem Ipsum, Lorem Ipsum';
+      document.querySelector('.center-content').appendChild(centerP);
+      //Create image in section left
+      let leftImg = document.createElement('img');
+      leftImg.setAttribute('src', 'https://picsum.photos/200');
+      leftImg.classList.add('small-image');
+      document.querySelector('.left-content').appendChild(leftImg);
+      // Create UL in section right
+      let rightUL = document.createElement('ul');
+      let listContent = ['Um', 'Dois', 'Três', 'Quatro', 'Cinco', 'Seis', 'Sete', 'Oito', 'Nove', 'Dez'];
+      for (let i = 0; i < listContent.length; i += 1) {
+        let listElement = document.createElement('li');
+        listElement.innerText = listContent[i];
+        rightUL.appendChild(listElement);
+      }
+      document.querySelector('.right-content').appendChild(rightUL);
+      // Create 3 H3 tags in main
+      let firstH3 = document.createElement('h3');
+      firstH3.classList.add('description');
+      let secondH3 = document.createElement('h3');
+      secondH3.classList.add('description');
+      let thirdH3 = document.createElement('h3');
+      thirdH3.classList.add('description');
+      document.querySelector('.main-content').appendChild(firstH3);
+      document.querySelector('.main-content').appendChild(secondH3);
+      document.querySelector('.main-content').appendChild(thirdH3);
+      // Remove left section
+      let toBeRemoved = document.querySelector('.left-content');
+      document.querySelector('.main-content').removeChild(toBeRemoved);
+      // Centralize right section
+      document.querySelector('.right-content').style.marginRight = 'auto';
+      // Change BG color of the father element of section center
+      document.querySelector('.center-content').parentNode.style.backgroundColor = 'green';
+      // Remove the last two elements from the UL
+      let list = document.querySelector('ul');
+      list.removeChild(list.lastChild);
+      list.removeChild(list.lastChild);
+    </script>
+  </body>
+</html>

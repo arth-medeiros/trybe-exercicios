@@ -1,0 +1,52 @@
+<main id="paiDoPai">
+  <section id="pai">
+    <section id="primeiroFilho"></section>
+    <section id="elementoOndeVoceEsta">
+      <section id="primeiroFilhoDoFilho"></section>
+      <section id="segundoEUltimoFilhoDoFilho"></section>
+    </section>
+    Atenção!
+    <section id="terceiroFilho"></section>
+    <section id="quartoEUltimoFilho"></section>
+  </section>
+</main>
+<script>
+  console.log(document.getElementById('elementoOndeVoceEsta'));
+  document.getElementById('elementoOndeVoceEsta').parentNode.style.color = 'red';
+  document.getElementById('elementoOndeVoceEsta').firstElementChild.innerHTML = '<p>Texto Aqui</p>';
+  console.log(document.getElementById('pai').firstElementChild);
+  console.log(document.getElementById('elementoOndeVoceEsta').previousElementSibling);
+  console.log(document.getElementById('elementoOndeVoceEsta').nextSibling);
+  console.log(document.getElementById('elementoOndeVoceEsta').nextElementSibling);
+  console.log(document.getElementById('pai').firstElementChild.nextElementSibling.nextElementSibling);
+  
+  function elementoVcEstaSibling() {
+    let elemento = document.querySelector('#pai');
+    let newSibling = document.createElement('h1');
+    newSibling.innerText = 'Im a Sibling';
+    elemento.appendChild(newSibling);
+  }
+  function elementoVcEstaChild() {
+    let elemento = document.querySelector('#elementoOndeVoceEsta');
+    let newChild = document.createElement('h2');
+    newChild.innerText = 'Im a Child';
+    elemento.appendChild(newChild);
+  }
+  function filhoDoFilhoChild() {
+    let elemento = document.querySelector('#primeiroFilhoDoFilho');
+    let newChild = document.createElement('h2');
+    newChild.setAttribute('id', 'filhoDoPrimeiroFilhoDoFilho');
+    newChild.innerText = 'Im also a Child';
+    elemento.appendChild(newChild);
+    console.log(document.querySelector('#filhoDoPrimeiroFilhoDoFilho').parentNode.parentNode.nextElementSibling);
+  }
+  function removeElements() {
+    let elementList = document.querySelector('#paiDoPai').querySelectorAll("*");
+    console.log(elementList);
+    for (let i = 0; i < elementList.length; i += 1) {
+      if (elementList[i].id != 'pai' && elementList[i].id != 'elementoOndeVoceEsta' && elementList[i].id != 'primeiroFilhoDoFilho') {
+        elementList[i].parentNode.removeChild(elementList[i]);
+      }
+    }
+  }
+</script>
