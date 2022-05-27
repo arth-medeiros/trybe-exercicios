@@ -15,7 +15,6 @@ createDaysOfTheWeek();
 
 // Escreva seu código abaixo.
 //Exercício 1
-
 const dezDaysList = [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 function isHoliday(element) {
   if (element.innerText == 24 || element.innerText == 25 || element.innerText == 31) {
@@ -34,13 +33,13 @@ function createCalendar(intArray) {
     newDay.classList.add('day');
     isHoliday(newDay);
     isFriday(newDay);
+    newDay.addEventListener('click', setDayColorToSelected);
     document.querySelector('#days').appendChild(newDay);
   }
 }
 createCalendar(dezDaysList);
 
 //Exercício 2
-
 let feriados = 'Feriados';
 function createBtnHoliday(string) {
   let btn = document.createElement('button');
@@ -114,24 +113,66 @@ for (let i = 0; i < dayList.length; i += 1) {
 }
 
 //Exercício 8
-let cor = 'green';
+let cor = ['yellow', 'blue', 'green'];
 
 function newTaskDiv(string) {
   let newDiv = document.createElement('div');
   newDiv.classList.add('task');
   newDiv.style.backgroundColor = string;
+  newDiv.addEventListener('click', selectTask);
   document.querySelector('.my-tasks').appendChild(newDiv);
 }
 
 //Exercício 7
-function newTask() {
-  let newTask = document.querySelector('#task-input').value;
-  let taskListItem = document.createElement('span');
-  taskListItem.innerText = newTask;
-  document.querySelector('.my-tasks').appendChild(taskListItem);
-  newTaskDiv(cor);
+let whatTasks = ['Estudar', 'Faxinar', 'Descansar'];
+
+function newTask(string) {
+  for (let i = 0; i < string.length; i += 1) {
+    let taskListItem = document.createElement('span');
+    taskListItem.innerText = string[i];
+    document.querySelector('.my-tasks').appendChild(taskListItem);
+    newTaskDiv(cor[i]);
+  }
 }
-let addBTN = document.querySelector('#btn-add');
-addBTN.addEventListener('click', newTask);
+window.addEventListener('load', newTask(whatTasks));
 
 //Exercício 9
+function selectTask(origin) {
+  if (origin.target === document.querySelector('.task-selected')) {
+    origin.target.classList.remove('task-selected');
+    return
+  }
+  if (document.querySelector('.task-selected') != null) {
+    document.querySelector('.task-selected').classList.remove('task-selected');
+  }
+  origin.target.classList.add('task-selected');
+}
+
+//Exercício 10
+function setDayColorToSelected(origin) {
+  if (origin.target.style.color === document.querySelector('.task-selected').style.backgroundColor) {
+    origin.target.style.color = 'rgb(119,119,119)';
+  }
+  else {
+    origin.target.style.color = document.querySelector('.task-selected').style.backgroundColor;
+  }
+}
+
+//Exercício 11
+function addToDoListItem(origin) {
+  if (document.querySelector('#task-input').value === '' || document.querySelector('#task-input').value === null) {
+    alert('Erro: Digite seu compromisso primeiro!');
+    return;
+  }
+  let toDoItem = document.createElement('li');
+  let text = document.querySelector('#task-input').value;
+  toDoItem.innerText = text;
+  document.querySelector('.task-list').appendChild(toDoItem);
+  document.querySelector('#task-input').value = '';
+}
+document.querySelector('#task-input').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    document.querySelector('#btn-add').click();
+  }
+});
+document.querySelector('#btn-add').addEventListener('click', addToDoListItem);
