@@ -39,10 +39,12 @@ function isFormValid(event) {
   if (isNameValid === false || isEmailValid === false || isWhyValid === false) {
     alert('Dados Inválidos');
     event.preventDefault();
+    return;
   }
-  else if (agreesWithTerms() === false) {
+  if (agreesWithTerms() === false) {
     alert('É necessário concordar com o compartilhamento de imagens da viagem.');
     event.preventDefault();
+    return;
   }
   alert('Dados enviados com sucesso! Obrigado por participar do concurso TrybeTrip.');
 }
