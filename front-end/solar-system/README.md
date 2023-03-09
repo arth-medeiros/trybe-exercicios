@@ -1,4 +1,4 @@
-# Zoo Functions
+# Solar System
 Projeto realizado em 21/09/2022 durante o módulo de front-end do curso de desenvolvimento de softwares da Trybe.
 
 Os objetivos do projeto foram:
