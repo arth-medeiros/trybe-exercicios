@@ -1,5 +1,5 @@
 # Trybetunes
-Projeto em grupo realizado em 25/10/2022 durante o módulo de front-end do curso de desenvolvimento de softwares da Trybe.
+Projeto realizado em 25/10/2022 durante o módulo de front-end do curso de desenvolvimento de softwares da Trybe.
 
 Os objetivos do projeto foram:
 
